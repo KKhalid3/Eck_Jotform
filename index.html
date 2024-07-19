@@ -3259,7 +3259,10 @@ JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,null,null
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const scrollToEnd = () => {
-      window.scrollTo(0, document.body.scrollHeight);
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth' // Für ein sanftes Scrollen
+      });
     };
 
     const checkAndScroll = () => {
@@ -3281,6 +3284,7 @@ JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,null,null
     });
   });
 </script>
+
 
 
 </body>
