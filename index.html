@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jotform</title>
+</head>
+<body>
+    <script type="text/javascript" src="https://form.jotform.com/jsform/241976325669370"></script>
+    <!-- Custom JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        function changeBackgroundIfClassExists() {
+          var elements = document.querySelectorAll('.form-line.jf-required.form-line-active');
+          elements.forEach(function(element) {
+            element.style.backgroundColor = 'yellow';
+          });
+        }
+
+        // Überprüfung alle 500 Millisekunden
+        function checkForClass() {
+          changeBackgroundIfClassExists();
+          setTimeout(checkForClass, 500); // Wiederhole alle 500 Millisekunden
+        }
+
+        // Starte die Überprüfung
+        checkForClass();
+      });
+    </script>
+</body>
+</html>
