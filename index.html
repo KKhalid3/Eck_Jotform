@@ -3256,31 +3256,38 @@ JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,null,null
 </form>
 <link id=color-scheme-style href="https://cdn01.jotfor.ms/stylebuilder/static/color-scheme.css?v=3.3.55421" type="text/css" rel="stylesheet" />
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const scrollToElement = (element) => {
-	window.scrollTo(0, 0);
-    };
+ <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const scrollToBottom = () => {
+          setTimeout(function () {
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+          }, 100);
+        };
 
-    const checkAndScroll = () => {
-      const targetElement = document.querySelector('.form-line.jf-required.form-line-active');
-      if (targetElement) {
-        console.log('Element found, scrolling to it');
-        scrollToElement(targetElement);
-      }
-    };
+        const checkAndScroll = () => {
+          const targetElement = document.querySelector(
+            ".form-line.jf-required.form-line-active"
+          );
+          if (targetElement) {
+            console.log("Element found, scrolling to bottom");
+            scrollToBottom();
+          }
+        };
 
-    // Initial check
-    checkAndScroll();
+        // Initial check
+        checkAndScroll();
 
-    // Observer to monitor changes
-    const observer = new MutationObserver(checkAndScroll);
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-  });
-</script>
+        // Observer to monitor changes
+        const observer = new MutationObserver(checkAndScroll);
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+        });
+      });
+    </script>
 
 
 
