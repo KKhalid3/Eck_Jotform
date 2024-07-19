@@ -3258,18 +3258,15 @@ JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,null,null
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const scrollToEnd = () => {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth' // Für ein sanftes Scrollen
-      });
+    const scrollToBottom = () => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     };
 
     const checkAndScroll = () => {
       const targetElement = document.querySelector('.form-line.jf-required.form-line-active');
       if (targetElement) {
-        console.log('Active required form line found.');
-        scrollToEnd();
+        console.log('Element found, scrolling to bottom');
+        scrollToBottom();
       }
     };
 
