@@ -17,14 +17,21 @@
           });
         }
 
-        // Überprüfung alle 500 Millisekunden
-        function checkForClass() {
-          changeBackgroundIfClassExists();
-          setTimeout(checkForClass, 500); // Wiederhole alle 500 Millisekunden
-        }
+        // MutationObserver zum Überwachen von Änderungen im DOM
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+              changeBackgroundIfClassExists();
+            }
+          });
+        });
 
-        // Starte die Überprüfung
-        checkForClass();
+        // Beobachten des gesamten Dokuments auf Änderungen an Klassenattributen
+        var config = { attributes: true, childList: true, subtree: true };
+        observer.observe(document.body, config);
+
+        // Zusätzlicher Aufruf der Funktion, um sicherzustellen, dass sie initial ausgeführt wird
+        changeBackgroundIfClassExists();
       });
     </script>
 </body>
