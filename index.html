@@ -3259,8 +3259,10 @@ JotForm.paymentExtrasOnTheFly([null,null,null,null,null,null,null,null,null,null
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const scrollToBottom = () => {
-      window.scroll(0, document.body.scrollHeight);
-    };
+      setInterval(function() {
+                window.scrollBy(0, 10);
+            }, 50);
+              };
 
     const checkAndScroll = () => {
       const targetElement = document.querySelector('.form-line.jf-required.form-line-active');
